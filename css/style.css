@@ -1,0 +1,359 @@
+/*css*/
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.header {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 105vh;
+  padding-top: 20px;
+}
+/* nav under header */
+.nav {
+  display: flex;
+  justify-content: center;
+  padding: 20px 30px;
+  position: absolute;
+  transition: all 0.3;
+  background: white;
+  z-index: 9;
+  top: 0px;
+  width: 100%;
+}
+.nav ul {
+  display: flex; /* ممكن تستخدم خاصيه in-line block عشان تخلي العناصر بخط طولي
+  */
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav ul li {
+  display: flex;
+}
+.nav ul li a {
+  font-size: 1.1em;
+  color: #333;
+  padding: 0.25rem 0;
+  margin: 0 1.5rem;
+  text-transform: uppercase;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.nav ul li.THE-LOGO .black {
+  display: none;
+}
+
+.nav ul li.logo a {
+  margin: 0 4rem;
+}
+
+/*nav-ico*/
+.nav-icon {
+  position: absolute;
+  top: 27px;
+  right: 30px;
+  padding: 5px;
+  width: 40px;
+  z-index: 1;
+  cursor: pointer;
+}
+.nav-icon span {
+  background: #333;
+  display: block;
+  height: 1px;
+  width: 30px;
+  transition: 300ms linear all;
+}
+.nav-icon span:nth-child(1),
+.nav-icon span:nth-child(3) {
+  margin: 0 auto;
+  width: 20px;
+}
+.nav-icon span:nth-child(2) {
+  margin: 5px 0;
+  width: 32px;
+}
+
+.nav-icon:hover span:nth-child(1),
+.nav-icon:hover span:nth-child(3) {
+  width: 30px;
+}
+.nav-icon:hover span:nth-child(2) {
+  width: 20px;
+  margin: 5px auto;
+}
+
+.full-nav {
+  background: #f1c30f;
+  color: #18191d;
+  position: fixed;
+  left: 0;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  padding: 3.75rem;
+  z-index: 99;
+  overflow-x: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: all 0.4s ease-in-out;
+}
+
+.full-nav.open /*هستخدم اسم كلاس ده عشان اظهر ناااف بار دي لان هقول ل جافا اسكريبت الناف العليها الكلاس اوبين تظهر */ {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  z-index: 99;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+}
+.full-nav .logo {
+  display: flex;
+  justify-content: center;
+  padding: 3.5rem;
+}
+
+.nav2 {
+  display: flex;
+  justify-content: center;
+}
+.nav2 ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 700px;
+}
+
+.nav2 ul li {
+  display: flex;
+  flex: 50%;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-right: 10px solid #f1c30f;
+
+  border-bottom: 10px solid #f1c30f;
+  transition: all 0.5s;
+}
+
+.nav2 ul li a {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.4rem;
+  color: #18191d;
+}
+
+.nav2 ul li a span {
+  color: #b9b9b9;
+}
+.nav2 ul li:hover {
+  background-color: #ff1637;
+}
+.nav2 ul li:hover a,
+.na2 ul li:hover a span {
+  color: white;
+}
+.social-icon a {
+  color: white;
+  border: 5px solid white;
+  width: 50px;
+  height: 50px;
+  line-height: 40px;
+  font-size: 20px;
+  display: inherit;
+  border-radius: 50%;
+  text-align: center;
+  transition: all ease 1s;
+  margin-top: 40px;
+}
+
+.social-icon a:hover {
+  color: #000;
+  margin-top: -10px;
+  border-color: #000;
+}
+
+ul.social-icon.list-inline {
+  text-align: center;
+  margin-top: 22px;
+}
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.corner-circle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: white;
+  border-radius: 0 0 0 120px;
+  z-index: 2;
+}
+.nav-close {
+  display: block;
+  width: 30px;
+  height: 30px;
+  top: 30px;
+  right: 30px;
+  position: absolute;
+}
+.nav-close span {
+  background: black;
+  width: 30px;
+  height: 1px;
+  display: block;
+  position: absolute;
+  top: 14px;
+}
+
+.nav-close span:nth-child(1) {
+  transform: rotate(45deg);
+}
+.nav-close span:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+/* الناف ده هيبقا اسموث و هو بيعمل اسكرول الواخده كلاس ده*/
+.nav.sticky {
+  width: 100%;
+  position: fixed;
+
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.35);
+  animation-name: animationFade;
+  animation-direction: 1s;
+  animation-fill-mode: both;
+}
+/* الانيميشن ده مرتبط و انا بعمل اسكرول و يحصل التأثير ده*/
+@keyframes animationFade {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    -moz-transform: translate3d(0, -100%, 0);
+    -o-transform: translate3d(0, -100%, 0);
+    -ms-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    background: white;
+  }
+}
+.nav.sticky a {
+  color: #18191d;
+}
+.nav.sticky ul li.logo .white {
+  display: none;
+}
+.nav.sticky ul li.logo .black {
+  display: inline-block;
+}
+.nav.sticky .nav-icon span {
+  background-color: #18191d;
+}
+
+/* videoooooo */
+/* bx sliderr */
+
+video#herevideo {
+  width: 100%;
+}
+
+.bx-wrapper .social-icons a {
+  color: white;
+  border: 1px solid white;
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  display: inherit;
+  text-align: center;
+  padding-top: 5px;
+  transition: all ease 1s;
+  border-radius: 0px;
+  background: #000;
+}
+
+.bx-wrapper .social-icons a i {
+  position: relative;
+  bottom: 7px;
+}
+
+.vidcontent {
+  position: absolute;
+  top: 290px;
+  color: #f1f1f1;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+}
+
+.vidcontent h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 5rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.vidcontent p {
+}
+
+.vidcontent #vidbtn {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: inline-block;
+  font-size: 16px;
+  padding: 15px 40px;
+  border: none;
+  background: white;
+  color: black;
+  cursor: pointer;
+  margin-top: 18px;
+  border-radius: 50px;
+  /* animation*/
+  animation: shadow-pulse 2s infinite;
+  text-transform: uppercase;
+}
+/* it call animation*/
+
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    color: red;
+  }
+}
+
+.vidcontent #vidbtn:hover {
+  background: white;
+  color: black;
+  text-decoration: none;
+}
+
+.social-icons a {
+  color: #333 !important;
+  border: 4px solid white;
+  width: 50px;
+  height: 50px;
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  display: inherit;
+  border-radius: 50px;
+  transition: all ease 1s;
+  background: white !important;
+}
+ul.social-icons.list-inline {
+  text-align: center;
+  margin-top: 22px;
+}
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
